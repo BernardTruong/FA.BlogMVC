@@ -1,0 +1,40 @@
+﻿@using FA.JustBlog.Core.Models;
+
+@model List<Post>
+<div class="card-body">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Content</th>
+                <th>Url Slug</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Content</th>
+                <th>Url Slug</th>
+                <th>Category</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Id</td>
+                    <td>@post.Title</td>
+                    <td>@post.Description</td>
+                    <td>@post.Content</td>
+                    <td>@post.UrlSlug</td>
+                    <td>@post.Category.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

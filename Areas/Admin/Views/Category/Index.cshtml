@@ -1,0 +1,81 @@
+﻿@using FA.JustBlog.Core.Models;
+@model List<Category>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="/Admin/Public/css/style.min.css" rel="stylesheet" />
+    <link href="/Admin/Public/css/styles.css" rel="stylesheet" />
+    <script src="/Admin/Public/assets/fontawesome/all.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 class="mt-4">Category management</h1>
+    <div class="breadcrumb mb-4 d-flex flex-row justify-content-between align-items-center">
+        <div class="breadcrumb-item active">Easy to manage categories!!</div>
+        <a class="btn btn-outline-success" asp-action="Create"><i class="fa-solid fa-plus"></i> Create new category</a>
+    </div>
+    @*<div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Post table
+        </div>
+        @Html.ActionLink("")
+        @Html.Grid()
+    </div>*@
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Category table
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Ordinal Number</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th data-sortable="false"></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Ordinal Number</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th data-sortable="false"></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @for (var i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@Model[i].Name</td>
+                            <td>@Model[i].Description</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@Model[i].Id"><i class="fa-solid fa-circle-info"></i></a>
+                                <a asp-action="Edit" asp-route-id="@Model[i].Id"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
+                                <a asp-action="Delete" asp-route-id="@Model[i].Id"><i class="fa-solid fa-trash text-danger"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>*@
+    <script src="/Admin/Public/assets/demo/Chart.min.js"></script>
+    <script src="/Admin/Public/assets/demo/chart-area-demo.js"></script>
+    <script src="/Admin/Public/assets/demo/chart-bar-demo.js"></script>
+    <script src="/Admin/Public/assets/demo/simple-datatables.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>*@
+    <script src="/Admin/Public/js/datatables-simple-demo.js"></script>
+
+</body>
+</html>

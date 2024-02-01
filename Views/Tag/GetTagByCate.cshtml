@@ -1,0 +1,24 @@
+﻿@using FA.JustBlog.Core.Models;
+
+
+@model List<Post>
+
+@* @{
+    Layout = null;
+} *@
+<h1 class="text-primary">@ViewBag.bigTitle</h1>
+@foreach (var post in Model)
+{
+    <div class="post-preview" style="padding: 0 0px">
+        <h2>
+            <a asp-controller="Post" asp-action="Details" asp-route-year="@post.PostedOn.Year"
+               asp-route-month="@post.PostedOn.Month.ToString("00")" asp-route-id="@post.Id">
+                @post.Title
+            </a>
+        </h2>
+        <p class="text-muted italic-text">Posted @post.PostedOn</p>
+        <p>@post.Content</p>
+        <hr>
+    </div>
+}
+@* <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="GetLatest">GetLatest</a> *@

@@ -1,0 +1,47 @@
+﻿@model FA.JustBlog.Core.Models.Tag
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<head>
+    <style>
+        .form-label {
+            font-weight: 700;
+            color: darkgoldenrod;
+        }
+
+            .form-label:after {
+                content: ":";
+                margin-right: 3px;
+                color: darkgoldenrod;
+            }
+    </style>
+</head>
+
+<h1>Details</h1>
+<hr />
+<form asp-action="Details">
+    <div class="row">
+        <div class="mb-3 col-6">
+            <label asp-for="@Model.Name" class="form-label"></label>
+            <span class="text-danger fw-bold">@Model.Name</span>
+        </div>
+        <div class="mb-3 col-6">
+            <label asp-for="@Model.UrlSlug" class="form-label"></label>
+            <span class="text-muted fst-italic">@Model.UrlSlug</span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.Description" class="form-label"></label>
+            @Model.Description
+        </div>    
+        <div class="mb-3">
+            <label asp-for="@Model.Count" class="form-label"></label>
+            @Model.Count
+        </div>        
+    </div>
+    <div>
+        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model?.TagId">Edit</a>
+        <a class="btn btn-outline-primary" asp-action="Index">Back to List</a>
+    </div>
+</form>

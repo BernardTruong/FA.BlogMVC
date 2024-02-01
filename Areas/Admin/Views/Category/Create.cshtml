@@ -1,0 +1,46 @@
+﻿@model FA.JustBlog.Core.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<head>
+    <style>
+        .customButton button {
+            background-color: white !important;
+            border: 1px solid #ced4da !important;
+        }
+
+        /*input[class*="placeholderColor"] {
+                    color: #ced4da
+                }*/
+    </style>
+</head>
+
+<h1>Create new post</h1>
+<hr />
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label asp-for="@Model.Name" class="form-label"></label>
+            <input asp-for="@Model.Name" class="form-control" placeholder="Category name" />
+            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 col">
+            <label asp-for="@Model.UrlSlug" class="form-label"></label>
+            <input asp-for="@Model.UrlSlug" class="form-control" placeholder="UrlSlug" />
+            <span asp-validation-for="@Model.UrlSlug" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Description" class="form-label"></label>
+        <textarea asp-for="@Model.Description" class="form-control" placeholder="Description something"></textarea>
+        <span asp-validation-for="@Model.Description" class="text-danger"></span>
+    </div>    
+    <div class="mb-3">
+        <input type="submit" value="Create" class="btn btn-outline-success" />
+        <a class="btn btn-outline-primary" asp-action="Index">Back to List</a>
+    </div>
+</form>
+

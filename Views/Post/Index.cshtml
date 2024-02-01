@@ -1,0 +1,40 @@
+﻿@using FA.JustBlog.Core.Models;
+@using FA.JustBlogMVC.Views.HtmlCustomHelper
+
+
+@model List<Post>
+
+@* @{
+    Layout = null;
+} *@
+<h1 class="text-primary">@ViewBag.myStringTitle</h1>
+@foreach (var post in Model)
+{
+    <div class="post-preview" style="padding: 0 0px">
+        <h2>
+            <a asp-controller="Post" asp-action="Details" asp-route-year="@post.PostedOn.Year"
+               asp-route-month="@post.PostedOn.Month.ToString("00")" asp-route-id="@post.Id">
+                @post.Title
+            </a>
+        </h2>
+        @* <p class="text-muted italic-text">Posted @post.PostedOn with rate @post.TotalRate by @post.ViewCount view(s)</p> *@
+        @Html.ToFriendlyFormat(post)
+        <p>@post.Content</p>
+
+        <div class="w-25 d-flex pb-3">
+            Categories:  
+            <div class ="text-center">@Html.CategoryLinkHelper(post.Category.Name, "text-primary")</div>
+        </div>
+
+        <div class="w-50 d-flex">
+            Tag:
+            @foreach (var id in post.PostTag)
+            {
+                @Html.TagLinkHelper(id.Tag.Name)
+            }
+        </div>
+        @*  <label>Category: </label> *@
+        <hr>
+    </div>
+}
+@* <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="GetLatest">GetLatest</a> *@

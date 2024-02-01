@@ -1,0 +1,26 @@
+﻿@using FA.JustBlog.Core.Models;
+
+
+@model List<Post>
+
+@* @{
+    Layout = null;
+} *@
+<h1 class="text-primary">@ViewBag.myStringTitle</h1>
+@foreach (var post in Model)
+{
+    <div class="post-preview" style="padding: 0 0px">
+        <h2>
+            @* <a class="post-title" href="@Url.Action("Detail", "Post", new {Id = @post.Id})">@post.Title</a> *@
+            <a asp-controller="Post" asp-action="Details" asp-route-year="@post.PostedOn.Year"
+               asp-route-month="@post.PostedOn.Month.ToString("00")" asp-route-title="@post.UrlSlug">
+                @post.Title
+            </a>
+        </h2>
+        <p class="text-muted italic-text">Posted @post.PostedOn</p>
+        <p>@post.Content</p>
+        <hr>
+    </div>
+}
+@* <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="GetLatest">GetLatest</a> *@
+<div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" asp-area="" asp-controller="Post" asp-action="GetLatest">Get Latest</a></div>

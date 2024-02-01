@@ -1,0 +1,100 @@
+﻿@model IEnumerable<FA.JustBlog.Core.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="ps-3">
+
+<h1>Post</h1>
+</div>
+<p class="container">
+    <a class = "btn btn-outline-primary" asp-controller="Posts" asp-action="Create"><i class="fa-solid fa-plus"></i> Create New Post</a>
+</p>
+<div class="card-body">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th style="width: 30%">
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UrlSlug)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Published)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostedOn)
+                </th>
+@*                 <th>
+                    @Html.DisplayNameFor(model => model.Modified)
+                </th> *@
+ @*                <th>
+                    @Html.DisplayNameFor(model => model.ViewCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RateCount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalRate)
+                </th> *@
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td style="width: 30%">
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UrlSlug)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Published)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostedOn)
+                    </td>
+@*                     <td>
+                        @Html.DisplayFor(modelItem => item.Modified)
+                    </td> *@
+@*                     <td>
+                        @Html.DisplayFor(modelItem => item.ViewCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RateCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalRate)
+                    </td> *@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                    <td>
+                        <a asp-controller="Posts" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i></a> 
+                        <a asp-controller="Posts" asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

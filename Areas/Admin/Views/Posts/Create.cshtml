@@ -1,0 +1,85 @@
+﻿@model FA.JustBlogMVC.Areas.Admin.Models.PostTagViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a Post</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Post.Title" class="control-label"></label>
+                    <input asp-for="Post.Title" class="form-control" />
+                    <span asp-validation-for="Post.Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Post.Description" class="control-label"></label>
+                    <input asp-for="Post.Description" class="form-control" />
+                    <span asp-validation-for="Post.Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Post.Content" class="control-label"></label>
+                    <input asp-for="Post.Content" class="form-control" />
+                    <span asp-validation-for="Post.Content" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Post.UrlSlug" class="control-label"></label>
+                    <input asp-for="Post.UrlSlug" class="form-control" />
+                    <span asp-validation-for="Post.UrlSlug" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Post.Published" /> @Html.DisplayNameFor(model => model.Post.Published)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Post.PostedOn" class="control-label"></label>
+                    <input asp-for="Post.PostedOn" class="form-control" />
+                    <span asp-validation-for="Post.PostedOn" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Post.Modified" /> @Html.DisplayNameFor(model => model.Post.Modified)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Post.ViewCount" class="control-label"></label>
+                    <input asp-for="Post.ViewCount" class="form-control" />
+                    <span asp-validation-for="Post.ViewCount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Post.RateCount" class="control-label"></label>
+                    <input asp-for="Post.RateCount" class="form-control" />
+                    <span asp-validation-for="Post.RateCount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Post.TotalRate" class="control-label"></label>
+                    <input asp-for="Post.TotalRate" class="form-control" />
+                    <span asp-validation-for="Post.TotalRate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Post.CategoryId" class="control-label"></label>
+                    <select asp-for="Post.CategoryId" class="form-control" asp-items="ViewBag.Category"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tag" class="control-label"></label>
+                    <select asp-for="Tag" class="form-control" asp-items="ViewBag.Tag" multiple></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
